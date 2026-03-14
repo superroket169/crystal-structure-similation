@@ -113,6 +113,26 @@ namespace Generator {
             }
         }
 
+        void drawCrystal() {
+            for (const Matrix& mat : firstAtomTransforms) {
+                firstAtomModel.transform = mat;
+                DrawModel(firstAtomModel, Vector3Zero(), 1.0f, WHITE); 
+            }
+
+            if (twoType) {
+                for (const Matrix& mat : secondAtomTransforms) {
+                    secondAtomModel.transform = mat;
+                    DrawModel(secondAtomModel, Vector3Zero(), 1.0f, WHITE);
+                }
+            }
+
+            if (prog_mode == STICKED_MODEL) {
+                for (const auto& bond : bonds) {
+                    DrawCylinderEx(bond.start, bond.end, bondThickness, bondThickness, 8, LIGHTGRAY);
+                }
+            }
+        }
+
 
     };
     
